@@ -1,4 +1,4 @@
- #include <string.h>
+#include <string.h>
 int main () {
 /* the following is a rotation encryption code; this will allow the user to type in a text and enctrypt it using the key */ 
     char encrypt (char * message){
@@ -8,21 +8,30 @@ int main () {
         printf("Insert desiered key for rotation"); //this printf and scanf allows the user to determine the key they wish to use for the rotation encryption
         scanf("%d", &key);
         
-        
-for (x = 65; x < 123; x++) {
-            if (x >= 65 && i <= 90) { /* If the char is uppercase */
-            x += key; /* add the key */
-            if (x > 90) x -= 26; /* if the char is higher than the highest uppercase char, sub 26 */
-            if (x < 65) x += 26; /* if the char is lower than the lowest uppercase char, add 26 */
-            
-        } else if (x >= 97 && x <= 122) { /* else if it's lowercase */
-            x += key; /* add the key */
-            if (x > 122) x -= 26; /* if the char is higher than the highest lowercase char, sub 26 */
-            if (x < 97) x += 26; /* if the char is lower than the lowest lowercase char, add 26 */
-       }
+/* the below code is run in a loop so that each character in the 'message'/ string is read and moves its value a given amount of ASCII characters determined by 
+the key down the alphabet. It prints the new value of the character determined by the key before being incrementing th x counter to determine the next character
+in the string. If the ASCII characters are shifted beyond Z in the rotation, they remaning letters are shifted back to A and continuse the alphabet from there*/
+
+        while (message[x] !=0){
+/* the first if statment in the loop is used so that any punctuation character that is read in the string will remain that same form of punctuation
+e.g. a fullstop, comma, or apostrophe will remain unchanged in the function*/
+            if (messgae[x] <=65){
+                message[x] = messgae[x];
+                x++;
+            }
+            else if ((message[x] +key) <= 90 && (message[x]=>65)){
+                message[x] = (message[x] + key);
+                x++
+            }
+            else if ((message[x] + key)>90){
+                message[x] = ((message[x] -26) + key);
+            }
+            }
+        }
+
 
           printf("%c %d\n", x, key);
             
 	return 0;
-}
+
 }
