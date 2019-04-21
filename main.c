@@ -45,6 +45,7 @@ remaining letters are shifted back to A and continues the alphabet from there*/
         for(c = 0; str[c] != '\0'; ++c){
 		ch = str[c];
 		
+	// below encrypts the lower case letters; leaving numbers, punctuation and grammar the same as in the message		
 		if(ch >= 'a' && ch <= 'z'){
 			ch = ch + key;
 			
@@ -54,7 +55,7 @@ remaining letters are shifted back to A and continues the alphabet from there*/
 			
 			str[c] = ch;
 		}
-	// this encrypts lowe case letters; leaving numbers, punctuation and grammar the same as in the message
+        // below encrypts upper case letters; leaving numbers, punctuation and grammar the same as in the message
 		if(ch >= 'A' && ch <= 'Z'){
 			ch = ch + key;
 	
@@ -65,16 +66,44 @@ remaining letters are shifted back to A and continues the alphabet from there*/
 			str[c] = ch;
 		}
 	}
-        // this encrypts upper case letters; leaving numbers, punctuation and grammar the same as in the message
+
       printf("\nEncrypted message: %s\n", str);
       break;
 
      case 2:
-      for(c = 0; (c < 100 && str[c] != '\0'); c++)
-        str[c] = str[c] - 3; //the key for encryption is 3 that is subtracted to ASCII value
+     printf("Insert desiered key for rotation:"); 
+       scanf("%d", & key);
+       /*this printf and scanf allows the user to determine the key they wish to use for the rotation encryption*/
+      
 
+	for(c = 0; str[c] != '\0'; ++c){
+		ch = str[c];
+		
+		// below decrypts the lower case letters; leaving numbers, punctuation and grammar the same as in the message			
+		if(ch >= 'a' && ch <= 'z'){
+			ch = ch - key;
+			
+			if(ch < 'a'){
+				ch = ch + 'z' - 'a' + 1;
+			}
+			
+			str[c] = ch;
+		}
+		 // below decrypts upper case letters; leaving numbers, punctuation and grammar the same as in the message
+		else if(ch >= 'A' && ch <= 'Z'){
+			ch = ch - key;
+			
+			if(ch < 'A'){
+				ch = ch + 'Z' - 'A' + 1;
+			}
+			
+			str[c] = ch;
+		}
+	}
+	
       printf("\nDecrypted string: %s\n", str);
       break;
+
     case 3:
           for(c = 0; (c < 100 && str[c] != '\0'); c++)
         str[c] = str[c] - 3; //the key for encryption is 3 that is subtracted to ASCII value
@@ -94,7 +123,7 @@ remaining letters are shifted back to A and continues the alphabet from there*/
    return 0;
 }
 
-
+    
     
     
            
