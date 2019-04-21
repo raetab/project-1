@@ -4,7 +4,7 @@
 
 int main()
 {
-   int i, x;
+   int i, x, key;
    char str[100];
 
    printf("\nPlease enter the message:\t");
@@ -15,14 +15,16 @@ int main()
     printf("2 = decrypt message using a rotation cypher.\n");
     printf("3 = encrypt message using a substitution cypher.\n");
     printf("4 = decrypt message using a substitution cypher.\n");
-   scanf("%d", &x);
+    scanf("%d", &x);
 
    //using switch case statements
    switch(x)
    {
    case 1:
+       printf("Insert desiered key for rotation:"); 
+       scanf("%d", &key);
       for(i = 0; (i < 100 && str[i] != '\0'); i++)
-        str[i] = str[i] + 3; //the key for encryption is 3 that is added to ASCII value
+       str[i] = str[i] + key; //the key for encryption is 3 that is added to ASCII value
 
       printf("\nEncrypted message: %s\n", str);
       break;
