@@ -1,9 +1,71 @@
+//this is a c program that allows the use of a rotation and substitution cipher to encrypt and decrypt messages
 #include<stdio.h>
 int main () {
+    int i, x;
+    char str [100];
     
+printf("\n Please enter the message: \t");
+gets(str);
+
+printf("\n Please chose the following options: \n");
+printf("1 = encrypt message using a caesar cypher.\n");
+printf("2 = decrypt message using a caesar cypher.\n");
+printf("3 = encrypt message using a rotation cypher.\n");
+printf("4 = decrypt message using a rotation cypher.\n");
+scanf("%d", &x);
+
+switch(x)
+{
+    case 1:
+        for ...
+        
+    case 2
+        for ...
     
+    case 3:
+        for ...
     
-/* the following code below this exction is an encryption code
+    case 4: 
+        for ...
+    
+    default:
+        printf("\n You selected an unknown option, &c\nPlease enter: 1, 2, 3 or 4\")
+}
+return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
     /* the following is a rotation encryption code; this will allow the user to type in a text and enctrypt it using the key */ 
     char message[500] = "message", ch; //char message [500] is an array and ch is a variable which can be passed as an argument in the functions  
@@ -12,7 +74,7 @@ int main () {
     
         printf("enter the desiered message you wish to encrypt:");
         /*this printf allows the user to determine the message they wish to use for the rotation encryption */
-        fgets(message); 
+        gets(message); 
         /* gets is a function that reads a line from stdin and stores it in a string (message); in this code it will stop 
         when an end of file (end of written text entered to the printf function) is reached */
         
@@ -52,6 +114,5 @@ punctuation  e.g. a fullstop, comma, or apostrophe will remain unchanged in the 
 	printf("Encrypted message: %s", message);
 	
 	return 0;
-*/
     
            
