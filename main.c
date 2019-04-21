@@ -9,7 +9,7 @@ int main()
    int c, key;
    /*int c - is a counter which is used to consecutively encrypt the letters within the text they enter
    int key - this is the key, which is the number of 'shifts' the alphabet is ASCII code will be moved  */
-   char str[100], ch; //char str [100] is an array and ch is a variable which can be passed as an argument in the functions  
+   char str[100], ch; //char str [100] is a string and ch is a variable which can be passed as an argument in the functions  
    
 
    printf("\nPlease enter the message:\t");
@@ -37,10 +37,10 @@ int main()
        /*this printf and scanf allows the user to determine the key they wish to use for the rotation encryption*/
       
       
-/* the below code is run in a loop so that each character in the 'message'/ string is read and moves its value a given amount of ASCII 
-characters determined by the key down the alphabet. It prints the new value of the character determined by the key before being incrementing
-the i counter is used to determine the next character in the string. If the ASCII characters are shifted beyond Z in the rotation, they remaining
-letters are shifted back to A and continues the alphabet from there*/
+/* the below code is run in a loop so that each character in the string is read and moves its value a given amount of ASCII characters 
+determined by the key down the alphabet. It prints the new value of the character determined by the key before being incrementing. The 
+c counter is used to determine the next character in the string. If the ASCII characters are shifted beyond Z in the rotation, the 
+remaining letters are shifted back to A and continues the alphabet from there*/
 
         for(c = 0; str[c] != '\0'; ++c){
 		ch = str[c];
@@ -54,6 +54,7 @@ letters are shifted back to A and continues the alphabet from there*/
 			
 			str[c] = ch;
 		}
+	// this encrypts lowe case letters; leaving numbers, punctuation and grammar the same as in the message
 		if(ch >= 'A' && ch <= 'Z'){
 			ch = ch + key;
 	
@@ -64,7 +65,7 @@ letters are shifted back to A and continues the alphabet from there*/
 			str[c] = ch;
 		}
 	}
-
+        // this encrypts upper case letters; leaving numbers, punctuation and grammar the same as in the message
       printf("\nEncrypted message: %s\n", str);
       break;
 
