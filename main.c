@@ -3,8 +3,6 @@ int main () {
     
     
     
-    
-    
 /* the following code below this exction is an encryption code
  
     /* the following is a rotation encryption code; this will allow the user to type in a text and enctrypt it using the key */ 
