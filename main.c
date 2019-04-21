@@ -1,37 +1,55 @@
 //this is a c program that allows the use of a rotation and substitution cipher to encrypt and decrypt messages
-#include<stdio.h>
-int main () {
-    int i, x;
-    char str [100];
-    
-printf("\n Please enter the message: \t");
-gets(str);
 
-printf("\n Please chose the following options: \n");
-printf("1 = encrypt message using a caesar cypher.\n");
-printf("2 = decrypt message using a caesar cypher.\n");
-printf("3 = encrypt message using a rotation cypher.\n");
-printf("4 = decrypt message using a rotation cypher.\n");
-scanf("%d", &x);
+#include <stdio.h>
 
-switch(x)
+int main()
 {
-    case 1:
-        for ...
-        
-    case 2
-        for ...
-    
+   int i, x;
+   char str[100];
+
+   printf("\nPlease enter the message:\t");
+   gets(str);
+
+    printf("\n Please chose the following options: \n");
+    printf("1 = encrypt message using a rotation cypher.\n");
+    printf("2 = decrypt message using a rotation cypher.\n");
+    printf("3 = encrypt message using a substitution cypher.\n");
+    printf("4 = decrypt message using a substitution cypher.\n");
+   scanf("%d", &x);
+
+   //using switch case statements
+   switch(x)
+   {
+   case 1:
+      for(i = 0; (i < 100 && str[i] != '\0'); i++)
+        str[i] = str[i] + 3; //the key for encryption is 3 that is added to ASCII value
+
+      printf("\nEncrypted message: %s\n", str);
+      break;
+
+   case 2:
+      for(i = 0; (i < 100 && str[i] != '\0'); i++)
+        str[i] = str[i] - 3; //the key for encryption is 3 that is subtracted to ASCII value
+
+      printf("\nDecrypted  message: %s\n", str);
+      break;
     case 3:
-        for ...
-    
-    case 4: 
-        for ...
-    
-    default:
-        printf("\n You selected an unknown option, &c\nPlease enter: 1, 2, 3 or 4\")
-}
-return 0;
+          for()
+        ... 
+
+      printf("\nEncrypted message: %s\n", str);
+      break;
+     case 4:
+           for()
+       ... 
+
+      printf("\nDecrypted message: %s\n", str);
+      break;
+
+   default:
+      printf("\nYou selected an unknown option, \nPlease enter: 1, 2, 3 or 4\n",x);
+   }
+   return 0;
 }
 
 
