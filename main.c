@@ -21,31 +21,39 @@ int main()
    switch(x)
    {
    case 1:
-       printf("Insert desiered key for rotation:"); 
-       scanf("%d", &key);
-      for(i = 0; (i < 100 && str[i] != '\0'); i++)
-       str[i] = str[i] + key; //the key for encryption is 3 that is added to ASCII value
+          printf("Insert desiered key for rotation:"); 
+       scanf("%d", & key);
+      for(i = 0; (str[i] != '\0'); ++i)
+        str[i] = str[i] + key; //the key for encryption is 3 that is added to ASCII value
+        if (str[i] >= 65){
+            str[i] = str[i];
+        }
+         else if ((str[i] +key) >= 'A' && (str[i] <= 'Z')){
+                str[i] = (str[i] + key);
+            }
+            else if (str[i] > 'Z'){
+                str[i] = ((str[i] -26) + key);
+        }
 
       printf("\nEncrypted message: %s\n", str);
       break;
-
-   case 2:
+case 2:
       for(i = 0; (i < 100 && str[i] != '\0'); i++)
         str[i] = str[i] - 3; //the key for encryption is 3 that is subtracted to ASCII value
 
-      printf("\nDecrypted  message: %s\n", str);
+      printf("\nDecrypted string: %s\n", str);
       break;
     case 3:
-          for()
-        ... 
+          for(i = 0; (i < 100 && str[i] != '\0'); i++)
+        str[i] = str[i] - 3; //the key for encryption is 3 that is subtracted to ASCII value
 
-      printf("\nEncrypted message: %s\n", str);
+      printf("\nDecrypted string: %s\n", str);
       break;
      case 4:
-           for()
-       ... 
+           for(i = 0; (i < 100 && str[i] != '\0'); i++)
+        str[i] = str[i] - 3; //the key for encryption is 3 that is subtracted to ASCII value
 
-      printf("\nDecrypted message: %s\n", str);
+      printf("\nDecrypted string: %s\n", str);
       break;
 
    default:
