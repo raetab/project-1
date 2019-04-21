@@ -1,10 +1,14 @@
+#include<stdio.h>
 #include <string.h>
 int main () {
 /* the following is a rotation encryption code; this will allow the user to type in a text and enctrypt it using the key */ 
     char encrypt (char * message){
-    unsigned char x = 0; //this is a counter which is used to consecutively encrypt the letters within the text they enter
-    int key = 0; // this is the key, which is the number of 'shifts' the alphabet is ASCII code will be moved
+    unsigned char x=0; //this is a counter which is used to consecutively encrypt the letters within the text they enter
+    int key; // this is the key, which is the number of 'shifts' the alphabet is ASCII code will be moved
     
+        printf("enter the desiered message you wish to encrypt"); //this printf and scanf allows the user to determine the message they wish to use for the rotation encryption
+        gets(messgae); // this is a 
+        
         printf("Insert desiered key for rotation"); //this printf and scanf allows the user to determine the key they wish to use for the rotation encryption
         scanf("%d", &key);
         
