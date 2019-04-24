@@ -12,7 +12,7 @@ int main()
    char str[100], ch; //char str [100] is a string and ch is a variable which can be passed as an argument in the functions  
    
 
-   printf("\nPlease enter the message:\t");
+   printf("\nPlease enter the message for encryption or decryption:\t");
    /*this printf allows the user to determine the message they wish to use for the rotation encryption */
    gets(str);
 /* gets is a function that reads a line from stdin and stores it in a string/str); in this code it will stop 
@@ -104,12 +104,29 @@ remaining letters are shifted back to A and continues the alphabet from there*/
       printf("\nDecrypted string: %s\n", str);
       break;
 
-    case 3:
-          for(c = 0; (c < 100 && str[c] != '\0'); c++)
-        str[c] = str[c] - 3; //the key for encryption is 3 that is subtracted to ASCII value
+     case 3:
+        printf("Insert the desiered cypher by entering the substituted alphabet charachter in capital below the origninal alphabet sequence (don't use spaces or commas)\n");
+        printf("ABCDEFGHIJKLMNOPQRSTUVWXYZ\n");  
+        scanf("%s", message);
+        
+            for (c = 0; str[c] != '\0'; ++c){
+            	if(str[c] < 64){
+			        str[c] = str[c];
+		        	++c;
+            	}
+			
+    			else if(str[c] >= 'A' && str[c] <= 'Z'){
+    			    key = (str[c] - 65);
+    			    str[c] = message[c];
+    				++c;
+		    	}
+		}
+		 
 
-      printf("\nDecrypted string: %s\n", str);
+      printf("\nEncrypted string: %s\n", str);
+      
       break;
+      
      case 4:
            for(c = 0; (c < 100 && str[c] != '\0'); c++)
         str[c] = str[c] - 3; //the key for encryption is 3 that is subtracted to ASCII value
