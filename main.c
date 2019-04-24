@@ -1,15 +1,20 @@
 //this is a c program that allows the use of a rotation and substitution cipher to encrypt and decrypt messages
 
+
 #include <stdio.h>
+#include <string.h>
 
 
 
 int main()
 {   
-   int c, key;
-   /*int c - is a counter which is used to consecutively encrypt the letters within the text they enter
+   int c, key, x;
+   /*int c - is a counter  which is used to consecutively encrypt the letters within the text they enter
+   int x - is 
    int key - this is the key, which is the number of 'shifts' the alphabet is ASCII code will be moved  */
    char str[100], ch; //char str [100] is a string and ch is a variable which can be passed as an argument in the functions  
+   char message[1024];// this is a string used in the substitution encryption and decryption codes
+   
    
 
    printf("\nPlease enter the message for encryption or decryption:\t");
