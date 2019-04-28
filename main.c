@@ -19,8 +19,13 @@ int main(){
     char message[1024], ch; //char message is a string in the rotation cypher and ch is a variable which can be passed as an argument in the functions  
     char *message1 [1024]; //this is a string in the substitution cyphers
 
-
-
+        /* this printf and allows the user to determine the message they wish to use for encryption or decryption */    
+       printf("\nPlease enter the message for encryption:\t");
+       gets (message);
+        /* gets is a function that reads a line from stdin and stores it in a string/str); in this code it will stop 
+        when an end of file (end of written text entered to the printf function) is reached */
+   
+   
      /* this is a menu in which the user can determine the type of cypher they wish to use and whether they wish to encrypt and decrypt*/  
     printf("\n Please chose the following options: \n");
     printf("1 = encrypt message using a caesar cypher.\n");
@@ -35,9 +40,6 @@ int main(){
    /* the following is a rotation encryption code; this will allow the user to type in a text and enctrypt it using a desiered key */ 
    case 1:
    
-       /* this printf and scanf allows the user to determine the message they wish to use for the rotation encryption */    
-       printf("\nPlease enter the message for encryption:\t");
-       scanf ("%s", &message);
        
        /*this printf and scanf allows the user to determine the key they wish to use for the rotation encryption*/
        printf("Insert desiered key for rotation:"); 
@@ -49,19 +51,9 @@ int main(){
         remaining letters are shifted back to A and continues the alphabet from there*/
 
         for(counter = 0; message[counter] != '\0'; ++counter){
-		ch = toupper(message[counter]);
-	    // below encrypts the lower case letters into uppercase; leaving numbers, punctuation and grammar the same as in the message		
-
-		if(ch >= 'a' && ch <= 'z'){
-			ch = ch + k;
-			    if(ch > 'z'){
-				ch = ch - 'z' + 'a' - 1;
-			}
-			message[counter] = ch;
-		}
-
+		ch = toupper(message[counter]); // this turns all lower case letters to upper cases
+	
         // below encrypts upper case letters; leaving numbers, punctuation and grammar the same as in the message
-
 		if(ch >= 'A' && ch <= 'Z'){
 			ch = ch + k;
 			if(ch > 'Z'){
@@ -75,9 +67,7 @@ int main(){
     break;
 
     case 2:
-       /* this printf and scanf allows the user to determine the message they wish to use for rotation decryption */    
-       printf("\nPlease enter the message for decryption:\t");
-       scanf ("%s", &message);
+
     
         /*this printf and scanf allows the user to determine the key they wish to use for the rotation decryption*/
         printf("Insert desiered key for rotation:"); 
@@ -133,9 +123,7 @@ int main(){
       return encrypted_message;
     }
 
-    //this printf and scanf will allow the user to enter a message for the substitution cypher encryption
-        printf("\nPlease enter the message for encryption:\t");
-        scanf ("%s", &message1);
+
       
     //this printf and scanf will allow the user to enter a key for the substitution cypher encryption  
     char code[26];  
@@ -144,7 +132,7 @@ int main(){
         scanf ("%s", &code);
           
     //this allows for the encrypted message to be printed to the terminal
-    char *encrypted_message = encrypt(message1, code);
+    char *encrypted_message = encrypt(message, code);
         printf("Encrypted Message: %s\n", encrypted_message);
         
     break; 
@@ -180,10 +168,7 @@ int main(){
 
 }
 
-      //this printf and scanf will allow the user to enter a message for the substitution cypher decryption
-  char *message1 [1024];
-  printf("\nPlease enter the message for decryption:\t");
-  scanf ("%s", &message1);
+
   
     //this printf and scanf will allow the user to enter a key for the substitution cypher decryption 
         printf("Insert the desiered key for the substitution cypher\n");
