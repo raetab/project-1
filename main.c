@@ -5,54 +5,52 @@
 #include <ctype.h>
 
 
+        
+int find_index;
+char *code;
+char *char_to_find;
+
+
 int main(){   
+    int counter, k, choice; 
+    /*int counter - is a counter  which is used to consecutively encrypt the letters within the text they enter
+    int k - this is the key for the rotation cyphers, which is the number of 'shifts' the alphabet is ASCII code will be moved 
+    int choice- is the variable used in the switch case, that allows the users choice*/
+    char message[1024], ch; //char message is a string in the rotation cypher and ch is a variable which can be passed as an argument in the functions  
+    char *message1 [1024]; //this is a string in the substitution cyphers
 
-   int counter, k, choice; 
-   /*int counter - is a counter  which is used to consecutively encrypt the letters within the text they enter
-   int k - this is the key, which is the number of 'shifts' the alphabet is ASCII code will be moved  */
-
-    char message[1024], ch; //char message [100] is a string and ch is a variable which can be passed as an argument in the functions  
-    unsigned char c =0;
-    char key [1024];
-    char keyencryption(char *key1);
-    char character;
-    
-    char *message1 [1024];
 
 
      /* this is a menu in which the user can determine the type of cypher they wish to use and whether they wish to encrypt and decrypt*/  
-
     printf("\n Please chose the following options: \n");
     printf("1 = encrypt message using a caesar cypher.\n");
     printf("2 = decrypt message using a caesar cypher.\n");
-    printf("3 = encrypt message using a rotation cypher.\n");
-    printf("4 = decrypt message using a rotation cypher.\n");
-    scanf("%d", &counter);
+    printf("3 = encrypt message using a substitution cypher.\n");
+    printf("4 = decrypt message using a substitution cypher.\n");
+    scanf("%d", &choice);
 
    //using switch case statements to implement the above 4 options 
    switch(choice)
    {
    /* the following is a rotation encryption code; this will allow the user to type in a text and enctrypt it using a desiered key */ 
    case 1:
-           
-       printf("\nPlease enter the message for encryption or decryption:\t");
-       /*this printf allows the user to determine the message they wish to use for the rotation encryption */
-       gets(message);
-        /* gets is a function that reads a line from stdin and stores it in a string/str); in this code it will stop 
-        When an end of file (end of written text entered to the printf function) is reached */
-        
+   
+       /* this printf and scanf allows the user to determine the message they wish to use for the rotation encryption */    
+       printf("\nPlease enter the message for encryption:\t");
+       scanf ("%s", &message);
+       
+       /*this printf and scanf allows the user to determine the key they wish to use for the rotation encryption*/
        printf("Insert desiered key for rotation:"); 
        scanf("%d", & k);
-       /*this printf and scanf allows the user to determine the key they wish to use for the rotation encryption*/
 
         /* the below code is run in a loop so that each character in the string is read and moves its value a given amount of ASCII characters 
         determined by the key down the alphabet. It prints the new value of the character determined by the key before being incrementing. The 
-        c counter is used to determine the next character in the string. If the ASCII characters are shifted beyond Z in the rotation, the 
+        counter is used to determine the next character in the string. If the ASCII characters are shifted beyond Z in the rotation, the 
         remaining letters are shifted back to A and continues the alphabet from there*/
 
         for(counter = 0; message[counter] != '\0'; ++counter){
-		ch = message[counter];
-	    // below encrypts the lower case letters; leaving numbers, punctuation and grammar the same as in the message		
+		ch = toupper(message[counter]);
+	    // below encrypts the lower case letters into uppercase; leaving numbers, punctuation and grammar the same as in the message		
 
 		if(ch >= 'a' && ch <= 'z'){
 			ch = ch + k;
@@ -72,25 +70,22 @@ int main(){
 			message[counter] = ch;
 		}
 	}
-      printf("\nEncrypted message: %s\n", message);
+      printf("\nEncrypted message: %s\n", message);//this prints the encrypted message to the terminal
 
     break;
 
     case 2:
-            
-       printf("\nPlease enter the message for encryption or decryption:\t");
-       /*this printf allows the user to determine the message they wish to use for the rotation encryption */
-       gets(message);
-        /* gets is a function that reads a line from stdin and stores it in a string/str); in this code it will stop 
-        When an end of file (end of written text entered to the printf function) is reached */
-        
+       /* this printf and scanf allows the user to determine the message they wish to use for rotation decryption */    
+       printf("\nPlease enter the message for decryption:\t");
+       scanf ("%s", &message);
+    
+        /*this printf and scanf allows the user to determine the key they wish to use for the rotation decryption*/
         printf("Insert desiered key for rotation:"); 
         scanf("%d", & k);
-       /*this printf and scanf allows the user to determine the key they wish to use for the rotation encryption*/
 
 	    for(counter = 0; message[counter] != '\0'; ++counter){
-		    ch = message[counter];
-		// below decrypts the lower case letters; leaving numbers, punctuation and grammar the same as in the message			
+		    ch = toupper(message[counter]);
+		// below decrypts the lower case letters changing them to capitals; leaving numbers, punctuation and grammar the same as in the message			
 
 		if(ch >= 'a' && ch <= 'z'){
 			ch = ch - k;
@@ -109,61 +104,96 @@ int main(){
 			message[counter] = ch;
 		}
 	}
-        printf("\nDecrypted string: %s\n", message);
+        printf("\nDecrypted string: %s\n", message);//this prints the decrypted message to the terminal
 
     break;
 
     case 3:
+  /* in this case and case 4 of code -  char code is the key used */  
+    for(int i = 0 ; i < 26; i ++){
+        if(code[i] == char_to_find){
+        }
+      }
 
-        
-int find_index(char code[],char char_to_find,){
-    
-  for(int i = 0 ; i < 26; i ++){
-    if(code[i] == char_to_find){
-      return i;
+ 
+    char* encrypt(char *message,char *code){
+      int length = strlen(message);
+      char *encrypted_message = (char *) malloc(sizeof(char)*length);// this allocates space for the data to be stored
+      
+    /*this will go through the message character by character and will change the character to that desginated by the key which is *code inputed 
+    by the user and change lower case to upper case; the - A is used to get the encryption index, by zeroing the first value of the inputted key*/
+      for(int i = 0; i < length; i++){ 
+        int encryption_index = toupper(message[i]) - 'A';
+        if(encryption_index >= 0 && encryption_index < 26){
+          encrypted_message[i] = code[encryption_index]; //this will place the key character in the plcae of the original message
+        }else{
+          encrypted_message[i] = message[i];//this will allow all other characters that are not letter to remain the same
+        }
+      }
+      return encrypted_message;
     }
-  }
-  return -1;
-}
 
-
-char* encrypt(char *message1,char code[]){
-  int length = strlen(message1);
-  char *encrypted_message = (char *) malloc(sizeof(char)*length);
-
-  for(int i = 0; i < length; i++){
-    int encryption_index = toupper(message1[i]) - 'A';
-    if(encryption_index >= 0 && encryption_index < 26){
-      encrypted_message[i] = code[encryption_index];
-    }else{
-      encrypted_message[i] = message1[i];
-    }
-  }
-  return encrypted_message;
-}
-
-
-  char *message1 [1024];
-  printf("\nPlease enter the message for encryption or decryption:\n");
-  gets(message1);
-  
-  
-  char code[26];  
-
+    //this printf and scanf will allow the user to enter a message for the substitution cypher encryption
+        printf("\nPlease enter the message for encryption:\t");
+        scanf ("%s", &message1);
+      
+    //this printf and scanf will allow the user to enter a key for the substitution cypher encryption  
+    char code[26];  
         printf("Insert the desiered key for the substitution cypher\n");
         printf("ABCDEFGHIJKLMNOPQRSTUVWXYZ\n");  
-        gets(code);
-
-  char *encrypted_message = encrypt(message1, code);
-  printf("Original Message: %s\nEncrypted Message: %s\n", message1, encrypted_message);
-
-
+        scanf ("%s", &code);
+          
+    //this allows for the encrypted message to be printed to the terminal
+    char *encrypted_message = encrypt(message1, code);
+        printf("Encrypted Message: %s\n", encrypted_message);
+        
     break; 
 
     case 4:
-           for(counter = 0; (counter < 100 && message[counter] != '\0'); counter++)
-        message[counter] = message[counter] - 3; //the key for encryption is 3 that is subtracted to ASCII value
-      printf("\nDecrypted string: %s\n", message);
+
+    for(int i = 0 ; i < 26; i ++){
+        if(code[i] == char_to_find){
+        }
+      }
+
+
+    char *decrypt(char *message,char *code){
+      int length = strlen(message);
+      char *decrypted_message = (char *) malloc(sizeof(char)*length);// this allocates space for the data to be stored
+      
+/*this will go through the message character by character and will change the character to that desginated by the key which is *code inputed 
+    by the user and change lower case to upper case; the - A is used to get the encryption index, by zeroing the first value of the inputted key*/
+  for(int i = 0; i < length; i++){
+    int decryption_index = toupper(message[i]) - 'A';
+    if(decryption_index >= 0 && decryption_index < 26){
+        
+        find_index = code, toupper(message[i]);// find index will allow the charcter to be found in the message
+        int code_index = find_index;
+        decrypted_message[i] = 'A' + code_index; //this will place the key character to read english from the decrypted message
+    }
+    else{
+      decrypted_message[i] = message[i];//this will allow all other characters that are not letter to remain the same
+    }
+  }
+
+  return decrypted_message;
+
+}
+
+      //this printf and scanf will allow the user to enter a message for the substitution cypher decryption
+  char *message1 [1024];
+  printf("\nPlease enter the message for decryption:\t");
+  scanf ("%s", &message1);
+  
+    //this printf and scanf will allow the user to enter a key for the substitution cypher decryption 
+        printf("Insert the desiered key for the substitution cypher\n");
+        printf("ABCDEFGHIJKLMNOPQRSTUVWXYZ\n");  
+        scanf ("%s", &code);
+      
+    //this allows for the decrypted message to be printed to the terminal
+  char *decrypted_message = decrypt(encrypted_message, code);
+  printf("Decrypted Message: %s\n",decrypted_message);
+
     break;
     
     
