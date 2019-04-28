@@ -18,12 +18,6 @@ int main(){
     int choice- is the variable used in the switch case, that allows the users choice*/
     char message[1024], ch; //char message is a string in the rotation cypher and ch is a variable which can be passed as an argument in the functions  
 
-        /* this printf and allows the user to determine the message they wish to use for encryption or decryption */    
-       printf("\nPlease enter the message for encryption:\t");
-       gets (message);
-        /* gets is a function that reads a line from stdin and stores it in a string/str); in this code it will stop 
-        when an end of file (end of written text entered to the printf function) is reached */
-   
    
      /* this is a menu in which the user can determine the type of cypher they wish to use and whether they wish to encrypt and decrypt*/  
     printf("\n Please chose the following options: \n");
@@ -32,6 +26,13 @@ int main(){
     printf("3 = encrypt message using a substitution cypher.\n");
     printf("4 = decrypt message using a substitution cypher.\n");
     scanf("%d", &choice);
+    
+        /* this printf and allows the user to determine the message they wish to use for encryption or decryption */    
+        printf("\nPlease enter the message for encryption or decryption:\t");
+        ./gets (message);
+        /* gets is a function that reads a line from stdin and stores it in a string/str); in this code it will stop 
+        when an end of file (end of written text entered to the printf function) is reached */
+   
 
    //using switch case statements to implement the above 4 options 
     switch (choice)
