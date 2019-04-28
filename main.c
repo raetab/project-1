@@ -148,8 +148,6 @@ int main(){
             for(int i = 0; i < length; i++){
                 int decryption_index = toupper(message[i]) - 'A';
                     if(decryption_index >= 0 && decryption_index < 26){
-                       find_index = code, toupper(message[i]);// find index will allow the charcter to be found in the message
-                       int code_index = find_index;
                        decrypted_message[i] = 'A' + code_index; //this will place the key character to read english from the decrypted message
                     }
                         else{
