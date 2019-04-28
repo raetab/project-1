@@ -6,9 +6,9 @@
 
 
         
-int find_index;
-char *code;
-char *char_to_find;
+int find_index; //provides an index to allow the charcter in the message to be designated to the key
+char *code;// this is the key in the substitution codes (case 3 & case4)
+char *char_to_find; //a string whos value we want to find
 
 
 int main(){   
@@ -17,7 +17,6 @@ int main(){
     int k - this is the key for the rotation cyphers, which is the number of 'shifts' the alphabet is ASCII code will be moved 
     int choice- is the variable used in the switch case, that allows the users choice*/
     char message[1024], ch; //char message is a string in the rotation cypher and ch is a variable which can be passed as an argument in the functions  
-    char *message1 [1024]; //this is a string in the substitution cyphers
 
         /* this printf and allows the user to determine the message they wish to use for encryption or decryption */    
        printf("\nPlease enter the message for encryption:\t");
